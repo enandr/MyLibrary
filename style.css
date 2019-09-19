@@ -1,14 +1,22 @@
-div {
+body {
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: black;
+    height: 95vh;
+    /* position: fixed; */
 }
-span {
+h1 {
+    color: #EBEBEB;
+}
+.header_container {
+    text-align: center;
+    font-size: 30px;
+}
+.clock_container {
     font-family: 'Saira Stencil One', cursive;
-    display: flex;
     font-weight: bold;
     font-size: 80px;
     color: #EBEBEB;
+    text-shadow: 0 0 100px blue;
 }

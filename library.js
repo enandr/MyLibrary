@@ -44,9 +44,12 @@ var manipulateArray = {
         for (var position = 0;position<array.length;position++){
             if ( array[position] === thingToRemove ){
                 array.splice(position,1);
+                return array;
+            }
+            else if (position===array.length-1 && array[position]!==thingToRemove){
+                return "That item does not exist"
             }
         }
-        return array;
     },
     //Gets the array, adds to it either at the start or the end, and returns the array
     addItem: {
@@ -63,8 +66,14 @@ var manipulateArray = {
     changeItem: {
         //changes the array item at index
         atIndex: function(array,indexToChange,valueToChange){
-            array[indexToChange] = valueToChange;
-            return array;
+            if (indexToChange>=array.length){
+                return "That index does not exist";
+            }
+            else {
+                array[indexToChange] = valueToChange;
+                return array; 
+            }
+            
         },
         //finds the item in the index and changes it
         atItem: function(array,itemToChange,valueToChange){
@@ -73,18 +82,21 @@ var manipulateArray = {
                     array[position] = valueToChange;
                     return array;
                 }
+                else if (position===array.length-1 && array[position]!==itemToChange){
+                    return "That item does not exist";
+                }
             }
         }
     },
     // creates new arrays with numbers between two chosen numbers or creates an array with a to z
     create: {
         //creates an array with numbers between the given two numbers
-        numbers: function(startNum,endNum){
+        numbers: function(startNum,endNum,iteration){
             var newArray = [];
-            for (var position = startNum;position<=endNum;position++){
+            for (var position = startNum;position<=endNum;position+=iteration){
                 newArray.push(position);
             }
-            return newArray
+            return newArray;
         },
         //creates an array with letters between the two given letters as long as the end letter is greater than the start letter
         alphabet: function(startLetter,endLetter){
@@ -101,10 +113,46 @@ var manipulateArray = {
             }
             return newArray;
         }
+    },
+    findAllArrays: function(){
+        var allArray = Object.keys(window);
+        var arrayList = [];
+         console.log(allArray[nums]);
+        // console.log(typeof allArray.nums);
+        for (var keys in allArray){
+            var currentItem = allArray[keys];
+            console.log(Array.isArray(allArray[keys]));
+
+        }
     }
 }
+
+class ManipArray{
+    constructor (_array, _arg1, _arg2 ){
+        this.array = _array;
+        this.arg1 = _arg1;
+        this.arg2 = _arg2;
+    }
+        get(){
+            return this.array;
+        }
+        log(){
+            for (var arrayLocation=0;arrayLocation<this.array.length;arrayLocation++){
+                console.log(this.array[arrayLocation]);
+            }
+        }
+        reverse(){
+            var reversedArray=[];
+            for (var arrayLocation=this.array.length-1;arrayLocation>=0;arrayLocation--){
+                reversedArray.push(this.array[arrayLocation]);
+            }
+                return reversedArray;
+        }
+}
+
+// var rogerArray = new ManipulateArray(); 
 //This manipulates objects
-var manipulateObject = {
+ var manipulateObject = {
     //gets the each key and value of the object and console logs the key and value in one line
     log: function (obj){
         for (var key in obj){
