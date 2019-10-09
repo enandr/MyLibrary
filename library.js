@@ -29,10 +29,10 @@ Array.prototype.shuffle = function () {
     }
     return this;
 }
-Array.prototype.findPositon = function (array, thingToFind) {
-    for (var position = 0; position < array.length; position++) {
-        if (array[position] === thingToRemove) {
-            array.splice(position, 1);
+Array.prototype.findPositon = function (thingToFind) {
+    for (var position = 0; position < this.length; position++) {
+        if (this[position] === thingToFind) {
+            this.splice(position, 1);
             return array;
         }
         else if (position === array.length - 1 && array[position] !== thingToRemove) {
@@ -51,15 +51,20 @@ Array.prototype.removeItem = function (array, thingToRemove) {
         }
     }
 }
-/* Array.prototype.addItem = {
-    start: function (array, thingToAdd) {
-        array.unshift(thingToAdd);
-        return array;
-    },
-    end: function (array, thingToAdd) {
-        array.push(thingToAdd);
-        return array;
+Array.prototype.addItem = function(whereToAdd,thingToAdd){
+    var obj = {
+        start: function () {
+            this.unshift(thingToAdd);
+            console.log(this);
+            return this;
+        },
+        end: function () {
+            this.push(thingToAdd);
+            console.log(this);
+            return this;
+        }
     }
+    obj[whereToAdd];
 }
 Array.prototype.changeItem = {
     atIndex: function (array, indexToChange, valueToChange) {
@@ -84,4 +89,4 @@ Array.prototype.changeItem = {
             }
         }
     }
-} */
+}
