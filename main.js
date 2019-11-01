@@ -1,4 +1,4 @@
-//prototypes
+//prototypesdfadsfasdfasdfasdfasdfasd
 //!------------string prototypes------------
 String.prototype.remove = function(string){
   let array = this.split(string);
