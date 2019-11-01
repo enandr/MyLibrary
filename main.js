@@ -1,14 +1,13 @@
 //prototype
 //!------------string prototypes------------
-String.prototype.remove = function(string){
-  let array = this.split(string);
-  let newStr ='';
-  newStr = array.join()
-  newStr = newStr.replace(',', '')
-  while(newStr.indexOf(',')>-1){
-    newStr = newStr.replace(',', '')
+String.prototype.remove = function(){
+  let newStr=this;
+  for(let index = 0;index<arguments.length;index++){
+    while (newStr.indexOf(arguments[index]) > -1) {
+      newStr = newStr.replace(arguments[index], '')
+    }
   }
-  return newStr;
+return newStr;
 }
 String.prototype.reverse = function(){
   let newStr='';
