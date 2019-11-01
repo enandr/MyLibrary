@@ -1,0 +1,25 @@
+body{
+  margin:0;
+}
+p{
+  margin-left:5px;
+}
+.container{
+  display:flex;
+  width:100%;
+  height:100vh;
+}
+.left,.right{
+  height:100%;
+  flex-direction: column;
+
+}
+.left{
+  width:33%;
+  background-color: rgb(255, 255, 255);
+}
+.right{
+  width:100%;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+}
