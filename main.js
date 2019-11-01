@@ -33,11 +33,10 @@ Array.prototype.randomFrom = function(number){
       newArray = [],
       randNum = null;
   for (let index = number;index>0;index--){
-    randNum = Math.floor(Math.random()*this.length)
-    if (!chosenArray.includes(randNum)){
+    randNum = random(0,this.length)
       chosenArray.push(randNum);
       newArray.push(this[randNum]);
-    }
+      this.splice(randNum,1)
   }
   return newArray;
 }
