@@ -40,10 +40,6 @@ Array.prototype.randomFrom = function(number){
   return newArray;
 }
 
-Object.prototype.length = function(){
-  return Object.keys(this).length;
-}
-
 function randomBetween(min,max){
   return Math.floor(Math.random()*(max-min)+min);
 }
