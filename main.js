@@ -4,7 +4,8 @@ String.prototype.remove = function(){
   let newStr=this;
   for(let index = 0;index<arguments.length;index++){
     while (newStr.indexOf(arguments[index]) > -1) {
-      newStr = newStr.replace(arguments[index], '')
+      let toReplace=' ';
+      newStr = newStr.replace(arguments[index], toReplace)
     }
   }
 return newStr;
@@ -40,7 +41,44 @@ Array.prototype.randomFrom = function(number){
   }
   return newArray;
 }
+Array.prototype.saveSessionData = function(key){
+  let data = [];
+  let storage = window.sessionStorage;
+  if(typeof(storage) !=='undefined'){
+    data = JSON.stringify(this);
+    storage.setItem(key,data);
+    data = storage.getItem(key);
+    data = JSON.parse(data);
+    return data;
+  }
+}
+
+//!---------Objects prototypes-----------
+Object.prototype.length = function(){
+  return Object.keys(this).length;
+}
 //!--------Functions---------
 function random(min,max){
   return Math.floor(Math.random()*(max-min)+min);
 }
+function sessionClear(){
+  let storage = window.sessionStorage;
+  storage.clear();
+}
+function sessionGet(key){
+  let data;
+  let storage = window.sessionStorage;
+  if (typeof (storage) !== 'undefined') {
+    data = storage.getItem(key);
+    data = JSON.parse(data);
+    return data;
+  }
+}
+function sessionDelete(key) {
+  let storage = window.sessionStorage;
+  if (typeof (storage) !== 'undefined') {
+    storage.removeItem(key);
+  }
+}
+///saveSession()
+///saveLocal()
