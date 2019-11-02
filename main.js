@@ -1,5 +1,4 @@
-//prototype
-//!------------string prototypes------------
+
 String.prototype.remove = function(replaceString,removeString){
   let newStr=this;
   for(let index = 1;index<arguments.length;index++){
@@ -17,7 +16,6 @@ String.prototype.reverse = function(){
   }
   return newStr;
 }
-///!------------array prototypes------------
 Array.prototype.shuffle = function () {
   var newPos = 0;
   var tempVar = 0;
@@ -42,11 +40,9 @@ Array.prototype.randomFrom = function(number){
   return newArray;
 }
 
-//!---------Objects prototypes-----------
 Object.prototype.length = function(){
   return Object.keys(this).length;
 }
-//!--------Functions---------
 
 function randomBetween(min,max){
   return Math.floor(Math.random()*(max-min)+min);
