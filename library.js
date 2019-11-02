@@ -39,7 +39,7 @@ Array.prototype.randomFrom = function(number){
   }
   return newArray;
 } */
-class Storage {
+class StorageSave {
   constructor() {
 
   }
