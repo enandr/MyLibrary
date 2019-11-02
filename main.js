@@ -1,10 +1,10 @@
 //prototype
 //!------------string prototypes------------
-String.prototype.remove = function(){
+String.prototype.remove = function(replaceString,removeString){
   let newStr=this;
-  for(let index = 0;index<arguments.length;index++){
+  for(let index = 1;index<arguments.length;index++){
     while (newStr.indexOf(arguments[index]) > -1) {
-      let toReplace=' ';
+      let toReplace=replaceString;
       newStr = newStr.replace(arguments[index], toReplace)
     }
   }
@@ -47,13 +47,29 @@ Object.prototype.length = function(){
   return Object.keys(this).length;
 }
 //!--------Functions---------
-function random(min,max){
+/**
+ * Generates a random number between and including a min and max value
+ * @param {number} min
+ * @param {number} max
+ * @returns {number}
+ */
+function randomBetween(min,max){
   return Math.floor(Math.random()*(max-min)+min);
 }
+/**
+ * Clears Local Session Storage
+ * @param none
+ * @returns none
+ */
 function sessionClear(){
   let storage = window.sessionStorage;
   storage.clear();
 }
+/**
+ * Gets data from session storage at the key parameter
+ * @param {string} key
+ * @returns data that was stored
+ */
 function sessionGet(key){
   let data;
   let storage = window.sessionStorage;
@@ -63,12 +79,23 @@ function sessionGet(key){
     return data;
   }
 }
+/**
+ * Deletes data from session storage at the key parameter
+ * @param {string} key
+ * @returns none
+ */
 function sessionDelete(key) {
   let storage = window.sessionStorage;
   if (typeof (storage) !== 'undefined') {
     storage.removeItem(key);
   }
 }
+/**
+ * Stores data from value into the key in session storage
+ * @param {string} key
+ * @param {any} value
+ * @returns none
+ */
 function sessionSave(key,value) {
   let data = [];
   let storage = window.sessionStorage;
@@ -80,10 +107,20 @@ function sessionSave(key,value) {
     return data;
   }
 }
+/**
+ * Clears Local local Storage
+ * @param none
+ * @returns none
+ */
 function localClear() {
   let storage = window.localStorage;
   storage.clear();
 }
+/**
+ * Gets data from local storage at the key parameter
+ * @param {string} key
+ * @returns data that was stored
+ */
 function localGet(key) {
   let data;
   let storage = window.localStorage;
@@ -93,12 +130,24 @@ function localGet(key) {
     return data;
   }
 }
+/**
+ * Deletes data from local storage at the key parameter
+ * @param {string} key
+ * @returns none
+ */
 function localDelete(key) {
   let storage = window.localStorage;
   if (typeof (storage) !== 'undefined') {
     storage.removeItem(key);
+    console.log(`Deleted ${key} from local storage`);
   }
 }
+/**
+ * Stores data from value into the key in local storage
+ * @param {string} key
+ * @param {any} value
+ * @returns none
+ */
 function localSave(key,value) {
   let data = [];
   let storage = window.localStorage;
@@ -107,6 +156,18 @@ function localSave(key,value) {
     storage.setItem(key, data);
     data = storage.getItem(key);
     data = JSON.parse(data);
-    return data;
+    console.log(`Local storage saved in ${key}`);
   }
+}
+/**
+ * Clears all data from local and session storage
+  @params none
+  @returns none
+ */
+function storageClear(){
+  let localStorage = window.localStorage,
+    sessionStorage = window.sessionStorage;
+  localStorage.clear();
+  sessionStorage.clear();
+  console.log('Local storage and Session storage cleared');
 }
