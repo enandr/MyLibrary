@@ -41,17 +41,6 @@ Array.prototype.randomFrom = function(number){
   }
   return newArray;
 }
-Array.prototype.saveSessionData = function(key){
-  let data = [];
-  let storage = window.sessionStorage;
-  if(typeof(storage) !=='undefined'){
-    data = JSON.stringify(this);
-    storage.setItem(key,data);
-    data = storage.getItem(key);
-    data = JSON.parse(data);
-    return data;
-  }
-}
 
 //!---------Objects prototypes-----------
 Object.prototype.length = function(){
@@ -80,5 +69,44 @@ function sessionDelete(key) {
     storage.removeItem(key);
   }
 }
-///saveSession()
-///saveLocal()
+function sessionSave(key,value) {
+  let data = [];
+  let storage = window.sessionStorage;
+  if (typeof (storage) !== 'undefined') {
+    data = JSON.stringify(value);
+    storage.setItem(key, data);
+    data = storage.getItem(key);
+    data = JSON.parse(data);
+    return data;
+  }
+}
+function localClear() {
+  let storage = window.localStorage;
+  storage.clear();
+}
+function localGet(key) {
+  let data;
+  let storage = window.localStorage;
+  if (typeof (storage) !== 'undefined') {
+    data = storage.getItem(key);
+    data = JSON.parse(data);
+    return data;
+  }
+}
+function localDelete(key) {
+  let storage = window.localStorage;
+  if (typeof (storage) !== 'undefined') {
+    storage.removeItem(key);
+  }
+}
+function localSave(key,value) {
+  let data = [];
+  let storage = window.localStorage;
+  if (typeof (storage) !== 'undefined') {
+    data = JSON.stringify(value);
+    storage.setItem(key, data);
+    data = storage.getItem(key);
+    data = JSON.parse(data);
+    return data;
+  }
+}
