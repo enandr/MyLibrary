@@ -1,4 +1,3 @@
-
 /* String.prototype.remove = function(replaceString,removeString){
   let newStr=this;
   for(let index = 1;index<arguments.length;index++){
@@ -39,8 +38,9 @@ Array.prototype.randomFrom = function(number){
   }
   return newArray;
 } */
-class StorageSave {
-  constructor() {
+
+class Library{
+  constructor(){
 
   }
   randomBetween(min, max) {
